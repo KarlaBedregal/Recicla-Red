@@ -26,8 +26,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(name: String) {
-    //var text by remember { mutableStateOf("") }
+fun HomeScreen(name: String, navigateToLogout: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -50,10 +49,9 @@ fun HomeScreen(name: String) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Spacer(modifier = Modifier.height(300.dp))
-            //TextField(value = text, onValueChange = { text = it })
+            Spacer(modifier = Modifier.height(30.dp))
             Text(text = "Bienvenido(a) $name", fontSize = 25.sp)
-            Spacer(modifier = Modifier.height(300.dp))
+            Spacer(modifier = Modifier.height(32.dp))
             Button(
                 onClick = {},
                 modifier = Modifier
@@ -61,6 +59,15 @@ fun HomeScreen(name: String) {
                     .height(50.dp)
             ) {
                 Text(text = "Profile", fontSize = 18.sp)
+            }
+            Spacer(modifier = Modifier.height(22.dp))
+            Button(
+                onClick = { navigateToLogout() },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+            ) {
+                Text(text = "Logout", fontSize = 18.sp)
             }
         }
     }

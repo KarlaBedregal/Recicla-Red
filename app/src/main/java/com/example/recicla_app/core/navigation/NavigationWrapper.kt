@@ -21,7 +21,13 @@ fun NavigationWrapper() {
         }
         composable<LoginRequest> { backStackEntry ->
             val user: LoginRequest = backStackEntry.toRoute()
-            HomeScreen(user.username)
+            HomeScreen(user.username){
+                navController.navigate(Logout){
+                    popUpTo<Logout>{
+                        inclusive = true
+                    }
+                }
+            }
         }
     }
 }
